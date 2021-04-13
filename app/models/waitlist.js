@@ -1,14 +1,12 @@
 const mongoose = require('mongoose')
+const guestSchema = require('./guest')
 
-const exampleSchema = new mongoose.Schema({
-  title: {
+const waitlistSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true
   },
-  text: {
-    type: String,
-    required: true
-  },
+  guests: [guestSchema],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -18,4 +16,4 @@ const exampleSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('Example', exampleSchema)
+module.exports = mongoose.model('Waitlist', waitlistSchema)

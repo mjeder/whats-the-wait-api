@@ -6,6 +6,9 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  restaurant: {
+    type: String
+  },
   hashedPassword: {
     type: String,
     required: true
