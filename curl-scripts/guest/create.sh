@@ -3,7 +3,7 @@
 API="http://localhost:4741"
 URL_PATH="/guests"
 
-curl "${API}${URL_PATH}" \
+curl "${API}${URL_PATH}/${WAITLIST_ID}" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
@@ -15,8 +15,7 @@ curl "${API}${URL_PATH}" \
       "phone": "'"${PHONE}"'",
       "quote": "'"${QUOTE}"'",
       "notes": "'"${NOTES}"'",
-      "table": "'"${TABLE}"'",
-      "waitlistId": "'"${WAITLIST_ID}"'"
+      "table": "'"${TABLE}"'"
     }
   }'
 
