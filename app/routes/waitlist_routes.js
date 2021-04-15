@@ -15,7 +15,7 @@ const router = express.Router()
 
 // INDEX
 // GET /waitlists
-router.get('/waitlists', requireToken, (req, res, next) => {
+router.get('/waitlists', (req, res, next) => {
   Waitlist.find()
     .then(waitlists => {
       return waitlists.map(waitlist => waitlist.toObject())
@@ -26,7 +26,7 @@ router.get('/waitlists', requireToken, (req, res, next) => {
 
 // SHOW
 // GET /waitlists/5a7db6c74d55bc51bdf39793
-router.get('/waitlists/:id', requireToken, (req, res, next) => {
+router.get('/waitlists/:id', (req, res, next) => {
   Waitlist.findById(req.params.id)
     .then(handle404)
     .then(waitlist => res.status(200).json({ waitlist: waitlist.toObject() }))
@@ -54,7 +54,6 @@ router.patch('/waitlists/:id', requireToken, removeBlanks, (req, res, next) => {
     .then(handle404)
     .then(waitlist => {
       requireOwnership(req, waitlist)
-
       return waitlist.updateOne(req.body.waitlist)
     })
     .then(() => res.sendStatus(204))
