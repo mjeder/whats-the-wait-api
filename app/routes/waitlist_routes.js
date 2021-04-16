@@ -17,10 +17,11 @@ const router = express.Router()
 // GET /waitlists
 router.get('/waitlists', (req, res, next) => {
   Waitlist.find()
-    .then(waitlists => {
-      return waitlists.map(waitlist => waitlist.toObject())
+    .then(waitlist => {
+      requireOwnership(req, waitlist)
+      return waitlist.map(waitlist => waitlist.toObject())
     })
-    .then(waitlists => res.status(200).json({ waitlists: waitlists }))
+    .then(waitlist => res.status(200).json({ waitlists: waitlist }))
     .catch(next)
 })
 
@@ -29,7 +30,10 @@ router.get('/waitlists', (req, res, next) => {
 router.get('/waitlists/:id', (req, res, next) => {
   Waitlist.findById(req.params.id)
     .then(handle404)
-    .then(waitlist => res.status(200).json({ waitlist: waitlist.toObject() }))
+    .then(waitlist => {
+      requireOwnership(req, waitlist)
+      res.status(200).json({ waitlist: waitlist.toObject() })
+    })
     .catch(next)
 })
 
