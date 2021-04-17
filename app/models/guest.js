@@ -14,7 +14,7 @@ const guestSchema = new mongoose.Schema({
     required: true
   },
   quote: {
-    type: Number,
+    type: String,
     required: true
   },
   notes: {
