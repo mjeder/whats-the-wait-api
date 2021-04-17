@@ -15,19 +15,19 @@ const router = express.Router()
 
 // INDEX
 // GET /waitlists
-router.get('/waitlists', (req, res, next) => {
-  Waitlist.find()
-    .then(waitlist => {
-      requireOwnership(req, waitlist)
-      return waitlist.map(waitlist => waitlist.toObject())
+router.get('/waitlists', requireToken, (req, res, next) => {
+  const userId = req.user.id
+  Waitlist.find({ owner: userId })
+    .then(waitlists => {
+      return waitlists.map(waitlist => waitlist.toObject())
     })
-    .then(waitlist => res.status(200).json({ waitlists: waitlist }))
+    .then(waitlists => res.status(200).json({ waitlists: waitlists }))
     .catch(next)
 })
 
 // SHOW
 // GET /waitlists/5a7db6c74d55bc51bdf39793
-router.get('/waitlists/:id', (req, res, next) => {
+router.get('/waitlists/:id', requireToken, (req, res, next) => {
   Waitlist.findById(req.params.id)
     .then(handle404)
     .then(waitlist => {
