@@ -1,203 +1,109 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# What's The Wait? | General Assembly: Capstone Project
 
-# whats-the-wait-api
+*What's The Wait?* is a waitlist management system built for restaurants. It enables users to create waitlists that can be used to manage a busy Saturday night or keep a reservation list for a holiday that is coming up. 
 
-A template for starting projects with `express` as an API. Includes
-authentication and common middlewares
+More specifically a user can create a waitlist, view all waitlists that they own, view an individual waitlist with the guests on it, edit the name of the waitlist, and delete it. Once they create a waitlist they are able to add guests to it with information such as: name, guest count, phone number, time they were quoted, and any notes needed. As those guests are added to the waitlist they are kept in order of when they were added with additional information like the number they are on the list, timestamp of when they were added, and a running timer of how long they've been on the waitlist so a user can instantly compare that time to the time they quoted which will help them be proactive when it comes to any guest recovery issues. Additionally users can sit a guest, edit a guest, delete a guest, and _coming soon_ text a guest all from the view of the waitlist. 
+___
+## Important Links
+- [Front End Repo](https://github.com/mjeder/whats-the-wait-client)
+- Deployed Client - link coming soon due to technical difficulties
+- [Deployed API](https://whats-the-wait-api.herokuapp.com/)
+___
+## Planning Story
+I started off by writing user stories that would satisfy the requirements of the project and build a solid foundation for v1.0 of my application. Once I was able to document and decide on the user needs, I was able to start building out my wireframe and ERD to visualize how the application would look and operate. This lead to me creating a to-do list so I could stick to a daily schedule and ensure I would deliver my v1.0 by the deadline.
+___
+## Schedule
+### Planning
+- [X] Create User Stories
+- [X] Create Wire Frames
+- [X] Create ERD
+- [x] 1:1 with Instructor
+___
+### Set Up
+##### API
+- [x] Create a Github Repository
+- [x] Deploy to Heroku
 
-## Installation
+##### Client
+- [x] Create a Github Repository
+- [x] Deploy React app to Github Pages
+___
+### Development
+#### API
+- [x] Create WAITLIST resource and end points
+- [x] Test end points with curl scripts
+- [x] Add the relationship to a User
+- [x] Add User ownership to resource controller
+- [x] Create GUEST resource and end points
+- [x] Test end points with curl scripts
+- [x] Add the relationship to a User
+- [x] Add User ownership to resource controller
 
-1. [Download](../../archive/master.zip) this template.
-1. Move the .zip file to your `sei/projects/` directory and Unzip it (creating a
-   folder) -- **NOTE:** if the folder was already unzipped, use the `mv` command
-   line to move it to the `sei/projects/` directory.
-1. Rename the directory from whats-the-wait-api -> your-app-name.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Move into the new project and `git init`.
-1. Replace all instances of `'whats-the-wait-api'` with your app name.
-1. Install dependencies with `npm install`.
-1. Ensure that you have `nodemon` installed by running `npm install -g nodemon`.
-1. Ensure the API is functioning properly by running `npm run server`.
-1. Once everything is working, make an initial commit.
-1. Follow the steps in [express-api-deployment-guide](https://git.generalassemb.ly/ga-wdi-boston/express-api-deployment-guide)
+#### Client
+- [x] Sign Up (curl then web app)
+- [x] Sign In (curl then web app)
+- [x] Change Password (curl then web app)
+- [x] Sign Out (curl then web page)
+- [x] All API calls have success or failure messages
+- [x] Create WAITLIST resource (curl then web app)
+- [x] Get all of WAITLIST resources (curl then web app)
+- [x] Get one of WAITLIST resources (curl then web app)
+- [x] Delete single WAITLIST resource (curl then web app)
+- [x] Update single WAITLIST resource (curl then web app)
+- [x] Create GUEST resource (curl then web app)
+- [ ] Delete single GUEST resource (curl then web app)
+- [ ] Update single GUEST resource (curl then web app)
 
-## Structure
+#### Final Touches
+- [x] README
+- [ ] Troubleshoot/Debug
+- [ ] Style
+___
+## User Stories
+Auth
+- As an unregistered user, I would like to sign up for an account. (C)
+- As a registered user, I would like to sign into my account. (C)
+- As a signed in user, I would like to change my password. (U)
+- As a signed in user, I would like to sign out of my account. (D)
 
-Dependencies are stored in [`package.json`](package.json).
+Waitlist Management
+- As a signed in user, I would like to create a Waitlist. (C)
+- As a signed in user, I would like to see all of my created Waitlists. (R)
+- As a signed in user, I would like to see an individual Waitlist with all guests that belong to that waitlist. (R)
+- As a signed in user, I would like to edit my Waitlists. (U)
+- As a signed in user, I would like to delete my Waitlists. (D)
 
-The most important file for understanding the structure of the template is
-`server.js`. This is where the actual Express `app` object is created, where
-the middlewares and routes are registered, and more. To register a routefile,
-follow the pattern established here with `exampleRoutes` and `userRoutes`. If
-you want to add any middlewares to your app, do that here.
+Guest Management
+- As a signed in user, I would like to create a guest to add to my waitlist. (C)
+- As a signed in user, I would like to edit my guests. (U)
+- As a signed in user, I would like to delete my guests. (D)
+___
+## Technologies Used
+- React
+- CSS
+- Bootstrap
+- JavaScript
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+- Heroku
+- Ajax (Axios)
+___
+## Unsolved Problems
+- [ ] Currently I am unable to deploy my application on GH pages. Working on fixing that ASAP.
+- [ ] Creating a guest throws an error but still adds the guest to a waitlist on the server side.
+- [ ] Unable to delete a guest.
+- [ ] Unable to edit a guest.
+- [ ] Unable to seat a guest.
+___
+## Would like to eventually:
+- [ ] Responsive design for better UX on phone/tablet.
+- [ ] Seated list to keep track of guests that were sat OR accidentally sat so they can be put back on waitlist.
+- [ ] Statistics such as: total number of guests on the waitlist and current average wait for top 5 guests.
+- [ ] Texting feature to tell a guest their table is ready. (Possibly two-way)
+- [ ] Floor plan builder so guests can be placed directly at tables for a better UX for host/hostess to keep track of what tables are open.
 
-The `app` directory contains models and route files. Models are simply Mongoose
-models. To create your own, follow the patterns established in
-`app/models/example.js`. Route files are somewhat similar to controllers in
-Rails, but they cover more functionality, including serialization and deciding
-which HTTP verbs to accept and what to do with them.
-
-The `config` directory holds just `db.js`, which is where you specify the name
-and URL of your database.
-
-The `lib` directory is for code that will be used in other places in the
-application. The token authentication code is stored in `lib/auth.js`. The
-other files in `lib` deal with error handling. `custom_errors.js` is where all
-the different custom classes of errors are created. If you need some other kind
-of error message, you can add it here. There are also some functions defined
-here that are used elsewhere to check for errors. `lib/error_handler.js` is a
-function that will be used in all your `.catch`es. It catches errors, and sets
-the response status code based on what type of error got thrown.
-
-You probably will only need to interact with files in `app/models`,
-`app/routes`, and `server.js`. You'll need to edit `db/config.js` just once,
-to change the name of your app.
-
-## Tasks
-
-Instead of `grunt`, this template uses `npm` as a task runner. This is more
-conventional for modern Express apps, and it's handy because we'll definitely
-use `npm` anyway. These are the commands available:
-
-| Command                | Effect                                                                                                      |
-|------------------------|-------------------------------------------------------------------------------------------------------------|
-| `npm run server`       | Starts a development server with `nodemon` that automatically refreshes when you change something.                                                                                         |
-| `npm test`             | Runs automated tests.                                                                                       |
-| `npm run debug-server` | Starts the server in debug mode, which will print lots of extra info about what's happening inside the app. |
-
-## API
-
-Use this as the basis for your own API documentation. Add a new third-level
-heading for your custom entities, and follow the pattern provided for the
-built-in user authentication documentation.
-
-Scripts are included in [`curl-scripts`](curl-scripts) to test built-in actions.
-Add your own scripts to test your custom API.
-
-### Authentication
-
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/sign-up`             | `users#signup`    |
-| POST   | `/sign-in`             | `users#signin`    |
-| PATCH  | `/change-password/` | `users#changepw`  |
-| DELETE | `/sign-out/`        | `users#signout`   |
-
-#### POST /sign-up
-
-Request:
-
-```sh
-curl --include --request POST http://localhost:4741/sign-up \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "an@example.email",
-      "password": "an example password",
-      "password_confirmation": "an example password"
-    }
-  }'
-```
-
-```sh
-curl-scripts/sign-up.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 201 Created
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 1,
-    "email": "an@example.email"
-  }
-}
-```
-
-#### POST /sign-in
-
-Request:
-
-```sh
-curl --include --request POST http://localhost:4741/sign-in \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "an@example.email",
-      "password": "an example password"
-    }
-  }'
-```
-
-```sh
-curl-scripts/sign-in.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 1,
-    "email": "an@example.email",
-    "token": "33ad6372f795694b333ec5f329ebeaaa"
-  }
-}
-```
-
-#### PATCH /change-password/
-
-Request:
-
-```sh
-curl --include --request PATCH http://localhost:4741/change-password/ \
-  --header "Authorization: Bearer $TOKEN" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "passwords": {
-      "old": "an example password",
-      "new": "super sekrit"
-    }
-  }'
-```
-
-```sh
-TOKEN=33ad6372f795694b333ec5f329ebeaaa curl-scripts/change-password.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 204 No Content
-```
-
-#### DELETE /sign-out/
-
-Request:
-
-```sh
-curl --include --request DELETE http://localhost:4741/sign-out/ \
-  --header "Authorization: Bearer $TOKEN"
-```
-
-```sh
-TOKEN=33ad6372f795694b333ec5f329ebeaaa curl-scripts/sign-out.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 204 No Content
-```
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+___
+## ERD:
+GitHub and Imgur will not allow me to upload a photo of my ERD. Working on other options ASAP.
