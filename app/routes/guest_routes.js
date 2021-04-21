@@ -24,7 +24,8 @@ router.post('/guests/:waitlistId', requireToken, (req, res, next) => {
       waitlist.guests.push(data)
       return waitlist.save()
     })
-    .then(waitlist => res.status(201).json({waitlist: waitlist}))
+    .then(waitlist => waitlist.guests.sort((a, b) => b.createdAt - a.createdAt)[0])
+    .then(guest => res.status(201).json({guest: guest}))
     .catch(next)
 })
 
